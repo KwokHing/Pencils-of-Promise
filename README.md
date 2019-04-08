@@ -30,5 +30,14 @@ The histogram plot above shows that other than 'Question 6', which dips slightly
 
 
 **_2. Analyzing average changes and average scores between Treatment vs Control group_**
+
+| Control | Treatment |
+|---------|-----------|
+| 18      | 166       |
+
+It appears that there are much more teachers in the 'Treatment' group as compared to teachers in the 'Control' group (approx. 10%)
+
 ![png](images/3.png)
+
+
 ![png](images/4.png)
