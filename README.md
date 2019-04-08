@@ -29,3 +29,4 @@ From the above table and previous plot, we are not sure if there are any improve
 The histogram plot above shows that other than 'Question 6', which dips slightly, the average scores (dotted line) for all the other questions increases over time signaling some form of success of the Teachers Support progamming.
 
 
+**_2. Analyzing average changes and average scores between Treatment vs Control group_**
