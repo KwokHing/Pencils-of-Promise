@@ -60,4 +60,20 @@ The histogram plot below shows the average scores (dotted line) and score freque
 
 _2.2: Control vs Treatment for observation round 2_
 
+In observation round 2, the 'Treatment' group also performs much better than the 'Control' group across all the 11 questions further signaling the effectiveness of the Teachers Support progamming. 
+
 ![png](images/4.png)
+
+| qnsRating | round2ControlMean  | round2TreatmentMean | round2MeanDiff      |
+|-----------|--------------------|---------------------|---------------------|
+| Q1Rating  | 2.5555555555555554 | 2.7710843373493974  | 0.21552878179384205 |
+| Q2Rating  | 2.5555555555555554 | 2.855421686746988   | 0.29986613119143257 |
+| Q3Rating  | 2                  | 2.6265060240963853  | 0.6265060240963853  |
+| Q4Rating  | 2.5555555555555554 | 2.8433734939759034  | 0.2878179384203481  |
+| Q5Rating  | 2.4444444444444446 | 2.8433734939759034  | 0.3989290495314588  |
+| Q6Rating  | 2.4444444444444446 | 2.746987951807229   | 0.30254350736278424 |
+| Q7Rating  | 2.5555555555555554 | 3.0240963855421685  | 0.46854082998661317 |
+| Q8Rating  | 2.6666666666666665 | 2.8072289156626504  | 0.1405622489959839  |
+| Q9Rating  | 2.6666666666666665 | 2.963855421686747   | 0.29718875502008046 |
+| Q10Rating | 2.6666666666666665 | 2.8072289156626504  | 0.1405622489959839  |
+| Q11Rating | 2.3333333333333335 | 2.783132530120482   | 0.4497991967871484  |
