@@ -1,8 +1,8 @@
 # Data for A Cause - Pencils of Promise
 
-Goal: Visualising effectiveness of instruction in Ghana
+Goal: Visualising effectiveness of instruction in Ghana [data pre-processing work are not documented here yet]
 
-<b>1. Effectiveness of Teacher Support programming by analyzing changes within individual teachers' scores over time</b>
+<b><u>1. Effectiveness of Teacher Support programming by analyzing changes within individual teachers' scores over time</u></b>
 
 ![png](images/2.png)
 
@@ -25,5 +25,7 @@ The score differences (ranging from decrease of -2 to increase of 2 points) of e
 From the above table and previous plot, we are not sure if there are any improvement of the teacher's scoring over time. Therefore, the mean score of each question is plotted to visualise if there are any improvement over time. 
 
 ![png](images/1.png)
+
+The histogram plot above shows that other than 'Question 6', which dips slightly, the average scores (dotted line) for all the other questions increases over time signaling some form of success of the Teachers Support progamming.
 
 
