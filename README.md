@@ -37,6 +37,8 @@ The histogram plot above shows that other than 'Question 6', which dips slightly
 
 It appears that there are much more teachers in the 'Treatment' group as compared to teachers in the 'Control' group (approx. 10%)
 
+_2.1: Control vs Treatment for observation round 1_
+
 The histogram plot below shows the average scores for teachers in observation round 1. The 'Treatment' group performs pretty much better than the 'Control' group except for 'Question 8' where there are no significant difference (average difference of only 0.025, shown in the Table below) between the 'Treatment' and 'Control' group. 
 
 ![png](images/3.png)
@@ -55,5 +57,7 @@ The histogram plot below shows the average scores for teachers in observation ro
 | Q10Rating | 2.2222222222222223 | 2.566265060240964   | 0.34404283801874147  |
 | Q11Rating | 2.111111111111111  | 2.6144578313253013  | 0.5033467202141901   |
 
+
+_2.2: Control vs Treatment for observation round 2_
 
 ![png](images/4.png)
