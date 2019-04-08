@@ -6,7 +6,7 @@ Goal: Visualising effectiveness of instruction in Ghana
 
 ![png](images/2.png)
 
-First, the score differences (ranging from decrease of -2 to increase of 2 points) of each question (recorded from Round 1 and Round 2) for each teacher are plotted. Most of the teacher's scoring for the different questions remained unchanged over time while some of the teacher's score increase or decrease over time. The table below details the score changes for each question over time
+The score differences (ranging from decrease of -2 to increase of 2 points) of each question (recorded from Round 1 and Round 2) for each teacher are plotted above. Most of the teacher's scoring for the different questions remained unchanged over time while some of the teacher's score increase or decrease over time. The table below details the score changes for each question over time.
 
 | Qns | Num. of -2pts Decrease | Num. of -1pt Decrease | Num. of no diff | Num. of 1pt Increase | Num. of 2pts Increase |
 |-----|------------------------|-----------------------|-----------------|----------------------|-----------------------|
@@ -22,7 +22,7 @@ First, the score differences (ranging from decrease of -2 to increase of 2 point
 | 10  | 1                      | 20                    | 47              | 22                   | 2                     |
 | 11  | NA                     | 13                    | 49              | 29                   | 1                     |
 
-
+From the above table and previous plot, we are not sure if there are any improvement of the teacher's scoring over time. Therefore, the mean score of each question is plotted to visualise if there are any improvement over time. 
 
 ![png](images/1.png)
 
