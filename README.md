@@ -2,7 +2,7 @@
 
 Visualising effectiveness of instruction in Ghana
 
-### 1. Visualize effectiveness of Teacher Support programming by analyzing changes within individual teachers' scores over time
+<b>1. Visualize effectiveness of Teacher Support programming by analyzing changes within individual teachers' scores over time</b>
 
 
 
