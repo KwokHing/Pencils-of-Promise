@@ -39,7 +39,7 @@ It appears that there are much more teachers in the 'Treatment' group as compare
 
 _2.1: Control vs Treatment for observation round 1_
 
-The histogram plot below shows the average scores for teachers in observation round 1. The 'Treatment' group performs pretty much better than the 'Control' group except for 'Question 8' where there are no significant difference (average difference of only 0.025, shown in the Table below) between the 'Treatment' and 'Control' group. 
+The histogram plot below shows the average scores (dotted line) and score frequencies for teachers in observation round 1. The 'Treatment' group performs pretty much better than the 'Control' group except for 'Question 8' where there are no significant difference (average difference of only 0.025, shown in the Table below) between the 'Treatment' and 'Control' group. 
 
 ![png](images/3.png)
 
