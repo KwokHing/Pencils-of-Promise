@@ -30,3 +30,5 @@ The histogram plot above shows that other than 'Question 6', which dips slightly
 
 
 **_2. Analyzing average changes and average scores between Treatment vs Control group_**
+![png](images/3.png)
+![png](images/4.png)
