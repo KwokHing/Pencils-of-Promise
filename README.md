@@ -4,6 +4,7 @@ Goal: Visualising effectiveness of instruction in Ghana
 
 <b>1. Effectiveness of Teacher Support programming by analyzing changes within individual teachers' scores over time</b>
 
+![png](images/2.png)
 ![png](images/1.png)
 
 
