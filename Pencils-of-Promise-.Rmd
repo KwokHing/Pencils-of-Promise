@@ -1,0 +1,140 @@
+---
+title: "Data for A Cause - Pencils of Promise"
+output: html_document
+---
+
+# Loading Required Packages
+
+```{r}
+packages = c('tidyverse', 'reshape2', 'ggpubr')
+for (p in packages){
+  if(!require(p, character.only = T)){
+    install.packages(p)
+  }
+}
+```
+
+# Loading Dataset
+
+```{r}
+df <- read_csv('Ghana_Teacher_Observations.csv')
+head(df)
+```
+
+# Exploring Summary/Descriptive Statistics of Dataset
+
+```{r message=FALSE, warning=FALSE}
+summary(df)
+view(dfSummary(df))
+#print(dfSummary(df, graph.magnif = 0.5, valid.col = FALSE), method = 'render')
+```
+
+# Data Preparation & Pre-processing
+
+### Removing assessment questions description columns 
+The last 11 columns containing the actual assessment questions are not required for our purpose and will be removed.
+
+### Retain only the numberic information of 'TeacherAssessmentNumber'
+Convert 'TeacherAssessmentNumber' from string to numberic by retaining only the numberic information. This step is required in the later part when we need to use the 'TeacherAssessmentNumber' to determine the different rounds of assessments for each teacher.
+
+```{r}
+df <- df[1:(length(df)-11)]
+df$TeacherAssessmentNumber <- as.numeric(gsub("\\D","",df$TeacherAssessmentNumber))
+head(df)
+```
+
+### Get list of teachers that have gone through two rounds of observations at different time period
+
+```{r}
+obs_df <- df %>%
+  group_by(TeacherNumber, ClassNumber) %>%
+  filter(n() > 1, sum(duplicated(ObservationRound)) >= 0) %>%
+  filter(TeacherAssessmentNumber == min(TeacherAssessmentNumber) | TeacherAssessmentNumber == max(TeacherAssessmentNumber)) %>%
+  mutate(ObsRound = ifelse(TeacherAssessmentNumber == min(TeacherAssessmentNumber), 'Round 1', 'Round 2')) %>%
+  select(1,4:5,7,10:20,21) %>%
+  ungroup()
+
+obs_df
+```
+
+### Calculating rating differences for each teacher between observation round 1 and round 2
+### _lag = previous record or row_
+
+```{r}
+obs_diff <- obs_df %>%
+  group_by(TeacherNumber, ClassNumber) %>% 
+  mutate(Q1Diff = (Q1Rating - lag(Q1Rating))*-1, 
+         Q2Diff = (Q2Rating - lag(Q2Rating))*-1,
+         Q3Diff = (Q3Rating - lag(Q3Rating))*-1,
+         Q4Diff = (Q4Rating - lag(Q4Rating))*-1,
+         Q5Diff = (Q5Rating - lag(Q5Rating))*-1,
+         Q6Diff = (Q6Rating - lag(Q6Rating))*-1,
+         Q7Diff = (Q7Rating - lag(Q7Rating))*-1,
+         Q8Diff = (Q8Rating - lag(Q8Rating))*-1,
+         Q9Diff = (Q9Rating - lag(Q9Rating))*-1,
+         Q10Diff = (Q10Rating - lag(Q10Rating))*-1,
+         Q11Diff = (Q11Rating - lag(Q11Rating))*-1,
+         ) %>%
+  filter(!is.na(Q1Diff)) %>%
+  ungroup()
+
+obs_diff[,c(1,17:27)]
+```
+
+## Visualizing rating differences for each teacher
+
+```{r message=FALSE, warning=FALSE}
+ggplot(melt(obs_diff, id=1,17:27), aes(x = TeacherNumber, y = value)) + 
+  geom_bar(stat = "identity", 
+           fill = "grey50", 
+           colour = "black", 
+           width = 0.6) +
+  facet_wrap(~variable) +
+  xlab('Teacher') +
+  ylab('Rating Difference')
+```
+
+## Visualizing frequency of rating scores (1 to 4) for observation round 1 and 2 
+
+```{r message=FALSE, warning=FALSE}
+ggplot(melt(obs_df, id=c("TeacherNumber","ClassNumber","Grade","ObsRound","Status")), aes(value, fill=ObsRound)) + 
+  geom_histogram(bins = 4, position="identity", alpha=.5) + 
+  facet_wrap(~variable) +
+  xlab('Rating Scores') +
+  ylab('Count')
+```
+
+## Creating an average score dataframe grouped by observation rounds and questions rating
+Plotting average scores onto the frequency plot
+
+```{r}
+facetData <- melt(obs_df, id=c("TeacherNumber","ClassNumber","Grade","ObsRound","Status")) %>% 
+  group_by(ObsRound, variable) %>% 
+  summarize(valueMean = mean(value, na.rm = TRUE)) %>%
+  ungroup()
+
+facetData
+```
+
+```{r message=FALSE, warning=FALSE}
+# declare alpha out of aes() so that it will not show as part of legend
+# variables declared within aes() will be shown on legend panel
+ggplot(melt(obs_df, id=c("TeacherNumber","ClassNumber","Grade","ObsRound","Status")), aes(value, fill=ObsRound)) + 
+  geom_histogram(bins = 4, position="identity", alpha=.5) + 
+  #facet_wrap(~variable, scales = 'free_x')
+  facet_wrap(~variable) + 
+  geom_vline(data=facetData, aes(xintercept=valueMean, color=ObsRound),
+             linetype="dashed", size=.5) + 
+  xlab('Rating Scores') +
+  ylab('Count')
+```
+
+### Paired T-Test
+https://researchbasics.education.uconn.edu/t-test/#
+The Paired T-Test result shows that improvement in rating scores for Q2, Q7, Q8, Q9, Q10 and Q11 at round 2 are statistically significantly and not by chance.
+
+```{r}
+obs_df %>%
+    summarise_each(funs(t.test(.[ObsRound == "Round 1"], .[ObsRound == "Round 2"], paired = TRUE)$p.value), vars = Q1Rating:Q11Rating) %>%
+  setNames(c("Q1_p_value", "Q2_p_value", "Q3_p_value", "Q4_p_value", "Q5_p_value", "Q6_p_value", "Q7_p_value", "Q8_p_value", "Q9_p_value", "Q10_p_value", "Q11_p_value"))
+```
